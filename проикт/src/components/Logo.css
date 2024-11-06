@@ -1,0 +1,14 @@
+.logo-container {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    border: 2px solid rgba(0, 128, 0, 0.5);
+    margin-bottom: 10px;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: rgba(0, 128, 0, 0.7);
+}
