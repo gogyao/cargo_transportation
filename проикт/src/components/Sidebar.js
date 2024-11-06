@@ -1,21 +1,37 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import './Sidebar.css'
 
-function Sidebar () {
+function Sidebar ({ isAuthenticated, handleLogout, language, handleLanguageChange }) {
+  const { t } = useTranslation()
+
   return (
     <aside className="sidebar">
       <nav>
-        <button>Главная</button>
-        <button>Частным лицам</button>
-        <button>Бизнесу</button>
-        <button>О компании</button>
-        <button>Заключить договор</button>
-        <button>Доступные операторы</button>
-        <button>Доступные перевозчики</button>
+        <Link to="/"><button>{t('home')}</button></Link>
+        <Link to="/private"><button>{t('private')}</button></Link>
+        <Link to="/business"><button>{t('business')}</button></Link>
+        <Link to="/about"><button>{t('about')}</button></Link>
+        <Link to="/contract"><button>{t('contract')}</button></Link>
+        <Link to="/operators"><button>{t('operators')}</button></Link>
+        <Link to="/carriers"><button>{t('carriers')}</button></Link>
       </nav>
       <div className="footer">
-        <button>Войти в аккаунт</button>
-        <div className="lang">ru</div>
+        {isAuthenticated
+          ? (
+          <button onClick={handleLogout}>{t('logout')}</button>
+            )
+          : (
+          <>
+            <Link to="/login"><button>{t('login')}</button></Link>
+            <Link to="/register"><button>{t('register')}</button></Link>
+          </>
+            )}
+        <div className="lang-switch">
+          <button onClick={() => handleLanguageChange('en')} disabled={language === 'en'}>EN</button>
+          <button onClick={() => handleLanguageChange('ru')} disabled={language === 'ru'}>RU</button>
+        </div>
       </div>
     </aside>
   )
