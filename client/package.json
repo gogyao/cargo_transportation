@@ -1,5 +1,5 @@
 {
-  "name": "lab6",
+  "name": "cargo_transportation_client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
