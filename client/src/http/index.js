@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { config } from '../../../server/db'
 
 export const API_URL = 'http://localhost:5000/api'
 const $api = axios.create({

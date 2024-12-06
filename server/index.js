@@ -13,7 +13,10 @@ const app = express() // Создаем новое приложение express
 
 app.use(express.json()) // Добавляем к нему обработчик JSON, чтобы в этом виде можно было получать запросы и отправлять ответы
 app.use(cookieParser())
-app.use(cors()) // Добавляем к нему CORS - сервис запросов между разными источниками
+app.use(cors({
+    credentials:true,
+    origin: process.env.CLIENT_URL
+})) // Добавляем к нему CORS - сервис запросов между разными источниками
 app.use('/api', router)
 app.use(errorMiddleware)
 
