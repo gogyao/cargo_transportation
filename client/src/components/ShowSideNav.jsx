@@ -2,9 +2,12 @@ import { Sidenav, Nav } from 'rsuite'
 import GroupIcon from '@rsuite/icons/legacy/Group'
 import MagicIcon from '@rsuite/icons/legacy/Magic'
 import GearCircleIcon from '@rsuite/icons/legacy/GearCircle'
-import React from 'react'
+import React, { useContext } from 'react'
+import { Link } from 'react-router-dom'
+import { Context } from '..'
 
 const ShowSideNav = () => {
+  const { store } = useContext(Context)
   const [expanded, setExpanded] = React.useState(false)
   const [activeKey, setActiveKey] = React.useState('1')
 
@@ -20,16 +23,20 @@ const ShowSideNav = () => {
       <Sidenav expanded={expanded} defaultOpenKeys={['3', '4']} style={{ height: '100%' }}>
         <Sidenav.Body>
           <Nav activeKey={activeKey} onSelect={setActiveKey}>
-            <Nav.Item eventKey="1" icon={<CustomIcon url='https://w7.pngwing.com/pngs/474/248/png-transparent-bird-computer-icons-accipitridae-bald-eagle-bird-animals-hand-bald-eagle.png' />}>
-              ReactExpress
+            <Nav.Item as={Link} to="/" eventKey="1" icon={<CustomIcon url='https://w7.pngwing.com/pngs/474/248/png-transparent-bird-computer-icons-accipitridae-bald-eagle-bird-animals-hand-bald-eagle.png' />}>
+              ReactExpress(Landing)
             </Nav.Item>
-            <Nav.Item eventKey="2" icon={<GroupIcon />}>
-              Личный кабинет
-            </Nav.Item>
-            <Nav.Item eventKey="2" icon={<GroupIcon />}>
+            {(store.isAuth)
+              ? (<Nav.Item as={Link} to="/auth/personalaccount" eventKey="2" icon={<GroupIcon />}>
+                Личный кабинет
+              </Nav.Item>)
+              : (<Nav.Item as={Link} to="/auth/login" eventKey="2" icon={<GroupIcon />}>
+                Войти/Зарегистрироваться
+              </Nav.Item>)}
+            <Nav.Item eventKey="21" icon={<GroupIcon />}>
               Сделать заказ
             </Nav.Item>
-            <Nav.Item eventKey="2" icon={<GroupIcon />}>
+            <Nav.Item eventKey="22" icon={<GroupIcon />}>
               О компании
             </Nav.Item>
             <Nav.Menu placement="rightStart" eventKey="3" title="Advanced" icon={<MagicIcon />}>
@@ -38,20 +45,7 @@ const ShowSideNav = () => {
               <Nav.Item eventKey="3-3">Loyalty</Nav.Item>
               <Nav.Item eventKey="3-4">Visit Depth</Nav.Item>
             </Nav.Menu>
-            <Nav.Menu
-              placement="rightStart"
-              eventKey="4"
-              title="Settings"
-              icon={<GearCircleIcon />}
-            >
-              <Nav.Item eventKey="4-1">Applications</Nav.Item>
-              <Nav.Item eventKey="4-2">Channels</Nav.Item>
-              <Nav.Item eventKey="4-3">Versions</Nav.Item>
-              <Nav.Menu eventKey="4-5" title="Custom Action">
-                <Nav.Item eventKey="4-5-1">Action Name</Nav.Item>
-                <Nav.Item eventKey="4-5-2">Action Params</Nav.Item>
-              </Nav.Menu>
-            </Nav.Menu>
+            {(store.isAuth) ? (<Nav.Item onClick={() => store.logout()} eventKey="10">Выйти из аккаунта</Nav.Item>) : (null)}
           </Nav>
         </Sidenav.Body>
         <Sidenav.Toggle onToggle={expanded => setExpanded(expanded)} />

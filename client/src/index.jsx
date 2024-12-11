@@ -2,11 +2,10 @@ import React, { createContext } from 'react'
 import { createRoot } from 'react-dom/client'
 import Store from './store/store'
 import 'rsuite/dist/rsuite.min.css'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { BrowserRouter, createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { CustomProvider } from 'rsuite'
 import { ruRU } from 'rsuite/esm/locales'
 import Landing from './pages/Landing'
-import ShowSideNav from './components/ShowSideNav'
 import './index.css'
 import Login from './pages/Login'
 import PersonalAccount from './pages/PersonalAccount'
@@ -26,18 +25,17 @@ const router = createBrowserRouter([
   },
   {
     path: '/auth/personalaccount',
-    element: <PersonalAccount/>
+    element: <PersonalAccount />
   },
   {
     path: '/auth/login',
-    element: <Login/>
+    element: <Login />
   }
 ])
 
 root.render(
   <Context.Provider value={{ store }}>
     <CustomProvider theme="dark" locale={ruRU}>
-      <ShowSideNav />
       <RouterProvider router={router} />
     </CustomProvider>
   </Context.Provider>

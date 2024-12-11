@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import { Context } from '../index'
 import { observer } from 'mobx-react-lite'
 import { Button, ButtonToolbar, Form } from 'rsuite'
+import ShowSideNav from '../components/ShowSideNav'
 
 const LoginForm = () => {
   const [email, setEmail] = useState('')
@@ -10,6 +11,7 @@ const LoginForm = () => {
 
   return (
         <div className='loginDiv' style={{ backgroundImage: 'url(/images/PAbackground.png)' }}>
+             <ShowSideNav/>
             <Form>
                 <Form.Group controlId="email">
                     <Form.ControlLabel>Email</Form.ControlLabel>
