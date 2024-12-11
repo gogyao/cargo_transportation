@@ -35,13 +35,15 @@ code {
 }
 
 .loginDiv {
-  margin-top: 68px;
+  margin-top: 52px;
   display: flex;
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;
-  height: 820px;
-  width: 1785px;
+  height: 86vh;
+  width: 91vw;
+  background-size: cover;
+  background-repeat: no-repeat;
   margin-left: 95px;
   border-radius: 15px;
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
@@ -56,7 +58,7 @@ Form {
 }
 
 .PApage {
-  margin-top: 68px;
+  margin-top: 52px;
   display: flex;
   flex-wrap: wrap;
   align-content: center;
@@ -64,9 +66,64 @@ Form {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 820px;
-  width: 1785px;
+  height: 86vh;
+  width: 91vw;
   margin-left: 95px;
   border-radius: 15px;
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes slideme {
+  0% {
+    left: -30px;
+    margin-left: 0px;
+  }
+  30% {
+    left: 110%;
+    margin-left: 80px;
+  }
+  100% {
+    left: 110%;
+    margin-left: 80px;
+  }
+}
+
+.logout {
+  margin-top: 25px;
+  color: white;
+  overflow: hidden;
+  position: relative;
+  height: 50px;
+  width: 200px;
+  border-radius: 5px;
+  background-color: #2d3748;
+}
+
+.logout:after {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 200px;
+  margin-left: 60px;
+  background: #fff;
+  opacity: 0.5;
+  position: absolute;
+  left: -40px;
+  top: -100px;
+  z-index: 1;
+  transform: rotate(45deg);
+  transition: all 0.1s;
+  animation-name: slideme;
+  animation-duration: 3s;
+  animation-delay: 0.05s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.accountInfo {
+  background-color: white;
+  color:black;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
 }
