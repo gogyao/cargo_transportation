@@ -11,7 +11,7 @@ const PersonalAccount = () => {
     if (localStorage.getItem('token')) {
       store.checkAuth()
     }
-  }, [])
+  }, [store])
   async function getUsers () {
     try {
       const response = await UserService.fetchUsers()
