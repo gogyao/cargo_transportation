@@ -9,6 +9,8 @@ import Landing from './pages/Landing'
 import './index.css'
 import Login from './pages/Login'
 import PersonalAccount from './pages/PersonalAccount'
+import Order from './pages/Order'
+import AboutTheCompany from './pages/AboutTheCompany'
 
 const root = createRoot(document.getElementById('root'))
 
@@ -30,6 +32,14 @@ const router = createBrowserRouter([
   {
     path: '/auth/login',
     element: <Login />
+  },
+  {
+    path: '/order',
+    element: <Order />
+  },
+  {
+    path: '/aboutthecompany',
+    element: <AboutTheCompany />
   }
 ])
 

@@ -3,10 +3,12 @@ import { Context } from '../index'
 import { observer } from 'mobx-react-lite'
 import UserService from '../services/UserService'
 import ShowSideNav from '../components/ShowSideNav'
+import { useNavigate } from 'react-router-dom'
 
 const PersonalAccount = () => {
   const { store } = useContext(Context)
   const [users, setUsers] = useState([])
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (localStorage.getItem('token')) {
@@ -19,6 +21,12 @@ const PersonalAccount = () => {
       setUsers(response.data)
     } catch (e) {
       console.log(e)
+    }
+  }
+  const handleLogout = async () => {
+    const response = await store.logout()
+    if (!store.isAuth) {
+      navigate('/')
     }
   }
 
@@ -34,7 +42,7 @@ const PersonalAccount = () => {
         <h2>{'Роль  пользователя: пока отсутствует'}</h2>
         <h2>Статус авторизации пользователя: {store.isAuth ? <span style={{ color: 'green' }}>авторизован</span> : <span style={{ color: 'red' }}>не авторизован</span>} </h2>
         <h2>Статус подтверждения пользователя: {store.user.isActivated ? <span style={{ color: 'green' }}>аккаунт подтвержден по почте</span> : <span style={{ color: 'red' }}>подтвердите вашу почту</span>}</h2>
-        <button className='logout' onClick={() => store.logout()}>Выйти из аккаунта</button>
+        {(store.isAuth) ? <button className='logout' onClick={handleLogout}>Выйти из аккаунта</button> : ''}
         {/* <div>
           <button onClick={getUsers}>Получить пользователей</button>
         </div> */}

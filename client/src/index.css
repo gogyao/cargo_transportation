@@ -15,8 +15,16 @@ code {
 }
 
 .mainLandingDiv {
-  margin-left: 56px;
-  text-align: center;
+  margin-top: 52px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 91vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-left: 95px;
+  border-radius: 15px;
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
 }
 
 .custom-slider {
@@ -32,6 +40,7 @@ code {
   display: flex;
   align-content: center;
   justify-content: center;
+  border-radius: 15px 15px 0 0;
 }
 
 .loginDiv {

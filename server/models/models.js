@@ -1,5 +1,6 @@
 const sequelize = require("../db");
 const { DataTypes } = require("sequelize");
+const defaultRole = 'USER'
 
 
 const User = sequelize.define("user", {
@@ -8,6 +9,9 @@ const User = sequelize.define("user", {
   },
   password: { 
     type: DataTypes.STRING, allowNull: false
+  },
+  role: {
+    type: DataTypes.STRING(15), defaultValue:defaultRole
   },
   isActivated: { 
     type: DataTypes.BOOLEAN, defaultValue:false
