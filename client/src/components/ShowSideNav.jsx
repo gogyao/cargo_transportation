@@ -31,7 +31,7 @@ const ShowSideNav = () => {
     }
   }
   return (
-    <div style={{ height: '100vh', top: 0, left: 0, position: 'fixed', zIndex: 1000 }}>
+    <div style={{ height: '100vh', top: 0, left: 0, position: 'fixed', zIndex: 1500 }}>
       <Sidenav expanded={expanded} defaultOpenKeys={['3', '4']} style={{ height: '100%' }}>
         <Sidenav.Body>
           <Nav activeKey={activeKey} onSelect={setActiveKey}>

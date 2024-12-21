@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #ede9e3;
+  background-color: #4fa7fa;
   color: #2d3748;
 }
 
@@ -43,6 +43,7 @@ code {
   border-radius: 15px 15px 0 0;
 }
 
+
 .loginDiv {
   margin-top: 52px;
   display: flex;
@@ -75,11 +76,26 @@ Form {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   height: 86vh;
   width: 91vw;
   margin-left: 95px;
   border-radius: 15px;
-  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.603);
+}
+
+.PApage:before {
+	content: '';
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color:rgba(0, 0, 0, 0.384);
+  z-index: 2;
 }
 
 @keyframes slideme {
@@ -134,5 +150,15 @@ Form {
   color:black;
   text-align: center;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 15px;
+  width: 850px;
+  height:380px;
+  z-index: 1000;
+}
+
+.company-info {
+  color: rgb(0, 0, 0);
+  background-color: #a0cadda6;
+  hyphens:auto;
+  font-size: medium;
 }

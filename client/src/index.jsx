@@ -6,7 +6,7 @@ import { BrowserRouter, createBrowserRouter, RouterProvider } from 'react-router
 import { CustomProvider } from 'rsuite'
 import { ruRU } from 'rsuite/esm/locales'
 import Landing from './pages/Landing'
-import './index.css'
+import './styles/index.css'
 import Login from './pages/Login'
 import PersonalAccount from './pages/PersonalAccount'
 import Order from './pages/Order'
