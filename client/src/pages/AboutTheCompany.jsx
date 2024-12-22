@@ -19,7 +19,8 @@ const AboutTheCompany = () => {
   return (
     <div className="PApage" style={{ backgroundImage: 'url(/images/about.jpg)' }}>
     { (store.isAuth && <ShowSideNav/>) || <ShowSideNav/>}
-      <div className="company-info">
+
+    <div className="company-info">
         <h2>О компании</h2>
         <p>
         ООО «CargoTransportatioN» – это надежный партнер в сфере грузоперевозок, предоставляющий полный спектр услуг по доставке грузов по всей России и странам СНГ. Мы с 2015 года помогаем бизнесу и частным клиентам безопасно и быстро доставлять грузы любой сложности, предлагая современные решения и индивидуальный подход к каждому клиенту.
