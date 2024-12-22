@@ -95,7 +95,7 @@ const Order = () => {
             </Form.Group>
             <Form.Group>
               <Form.ControlLabel>Email</Form.ControlLabel>
-              <Form.Control name="email" type="email" value={store.user.email} autoComplete="email" />
+              <Form.Control name="email" type="email" autoComplete="email" />
             </Form.Group>
             <Form.Group>
               <Form.ControlLabel>Телефон</Form.ControlLabel>

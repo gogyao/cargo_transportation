@@ -4,39 +4,47 @@ const defaultRole = 'USER'
 
 
 const User = sequelize.define("user", {
-  email: { 
-    type: DataTypes.TEXT, unique:true, allowNull:false
+  email: {
+    type: DataTypes.TEXT, unique: true, allowNull: false
   },
-  password: { 
+  password: {
     type: DataTypes.STRING, allowNull: false
   },
   role: {
-    type: DataTypes.STRING(15), defaultValue:defaultRole
+    type: DataTypes.STRING(15), defaultValue: defaultRole
   },
-  isActivated: { 
-    type: DataTypes.BOOLEAN, defaultValue:false
+  isActivated: {
+    type: DataTypes.BOOLEAN, defaultValue: false
   },
-  activationLink: { 
+  activationLink: {
     type: DataTypes.STRING
   }
 });
 
 const Token = sequelize.define("token", {
-    user: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'users',
-        key: 'id',
-      },
-    },
-    refreshToken: {
-      type: DataTypes.STRING,
-      allowNull: false,
+  user: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: 'users',
+      key: 'id',
     },
   },
+  refreshToken: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+},
 );
 
+const Order = sequelize.define("order", {
+  name: { type: DataTypes.STRING },
+  email: { type: DataTypes.TEXT },
+  phoneNumber: { type: DataTypes.STRING(11) },
+  dangerType: { type: DataTypes.INTEGER },
+  description:{type:DataTypes.TEXT}
+})
+
 module.exports = {
-    User, Token
+  User, Token, Order
 }

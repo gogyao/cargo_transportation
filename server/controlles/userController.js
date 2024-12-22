@@ -1,5 +1,6 @@
 const ApiError = require("../exceptions/apiError")
 const userService = require("../service/userService")
+const orderService = require("../service/orderService")
 const { validationResult } = require('express-validator')
 
 class UserController {
@@ -64,6 +65,15 @@ class UserController {
             return res.json(users)
         } catch (e) {
             next(e)
+        }
+    }
+    async addOrder(req, res,next) {
+        try {
+            const {name, email, phoneNumber, dangerType, description} = req.body          
+            const orderData = await orderService.addOrder(name, email, phoneNumber, dangerType, description) 
+            return res.json(orderData)
+        } catch (e) {
+            
         }
     }
 }
