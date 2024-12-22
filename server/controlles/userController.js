@@ -67,13 +67,13 @@ class UserController {
             next(e)
         }
     }
-    async addOrder(req, res,next) {
+    async addOrder(req, res, next) {
         try {
-            const {name, email, phoneNumber, dangerType, description} = req.body          
-            const orderData = await orderService.addOrder(name, email, phoneNumber, dangerType, description) 
+            const { name, email, phoneNumber, dangerType, description } = req.body
+            const orderData = await orderService.addOrder(name, email, phoneNumber, dangerType, description)
             return res.json(orderData)
         } catch (e) {
-            
+
         }
     }
 }
