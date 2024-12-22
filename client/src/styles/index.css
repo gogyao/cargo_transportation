@@ -94,8 +94,8 @@ Form {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color:rgba(0, 0, 0, 0.384);
-  z-index: -1;
+	background-color:rgba(0, 0, 0, 0.623);
+  z-index: 0;
 }
 
 @keyframes slideme {
@@ -157,8 +157,37 @@ Form {
 }
 
 .company-info {
-  color: rgb(0, 0, 0);
-  background-color: #a0cadda6;
+  color: rgb(255, 255, 255);
+  /* background-color: #fdfdfda6; */
   hyphens:auto;
   font-size: medium;
+  z-index: 5;
+  margin-left: 2%;
+  margin-right: 2%;
 }
+
+.order {
+  z-index: 5;
+  color: rgb(255, 255, 255);
+  font-size: medium;
+}
+
+.CompanyPolicy {
+  color: rgb(255, 255, 255);
+  font-size: medium;
+}
+
+.rs-checkbox-label {
+  font-size: medium;
+}
+
+.rs-checkbox-label{
+  font-size: medium;
+}
+
+.Orderr {
+  color: #000000;
+}
+
+
+

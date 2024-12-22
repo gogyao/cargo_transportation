@@ -42,6 +42,7 @@ const Order = () => {
   return (
     <div className="PApage" style={{ backgroundImage: 'url(/images/order.jpg)' }}>
     { (store.isAuth && <ShowSideNav/>) || <ShowSideNav/>}
+    <div className="order">
       <div style={{ padding: '20px' }}>
         <h2 style={{ color: '#fff' }}>Отправка вашего заказа</h2>
         <p style={{ color: '#fff', maxWidth: '600px' }}>
@@ -75,9 +76,10 @@ const Order = () => {
         <Button appearance="default" onClick={() => setIsModalOpen(true)}>
           Открыть форму для отправки заказа
         </Button>
+        </div>
       </div>
-
       <Modal open={isModalOpen} onClose={() => setIsModalOpen(false)}>
+      <div className="Orderr">
         <Modal.Header>
           <Modal.Title>Заполните данные для отправки заказа</Modal.Title>
         </Modal.Header>
@@ -128,6 +130,7 @@ const Order = () => {
             Отмена
           </Button>
         </Modal.Footer>
+        </div>
       </Modal>
     </div>
   )
