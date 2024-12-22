@@ -1,5 +1,4 @@
 import { Sidenav, Nav } from 'rsuite'
-import GroupIcon from '@rsuite/icons/legacy/Group'
 import MemberIcon from '@rsuite/icons/Member'
 import ExitIcon from '@rsuite/icons/Exit'
 import IdMappingIcon from '@rsuite/icons/IdMapping'

@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { observer } from 'mobx-react-lite'
 import { Modal, Button, Form, Schema } from 'rsuite'
 import ShowSideNav from '../components/ShowSideNav'
+import { store } from '..'
 
 const { StringType } = Schema.Types
 
@@ -13,6 +15,16 @@ const Order = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [formData, setFormData] = useState({ name: '', email: '' })
   const [formError, setFormError] = useState({})
+
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      store.checkAuth()
+    }
+  }, [store])
+
+  if (store.isLoading) {
+    return <div>Загрузка...</div>
+  }
 
   const handleFileDownload = () => {
     const fileUrl = '/info/Info DG v.3.pdf'
@@ -29,7 +41,7 @@ const Order = () => {
 
   return (
     <div className="PApage" style={{ backgroundImage: 'url(/images/order.jpg)' }}>
-      <ShowSideNav />
+    { (store.isAuth && <ShowSideNav/>) || <ShowSideNav/>}
       <div style={{ padding: '20px' }}>
         <h2 style={{ color: '#fff' }}>Отправка вашего заказа</h2>
         <p style={{ color: '#fff', maxWidth: '600px' }}>
@@ -83,7 +95,7 @@ const Order = () => {
             </Form.Group>
             <Form.Group>
               <Form.ControlLabel>Email</Form.ControlLabel>
-              <Form.Control name="email" type="email" />
+              <Form.Control name="email" type="email" value={store.user.email} autoComplete="email" />
             </Form.Group>
             <Form.Group>
               <Form.ControlLabel>Телефон</Form.ControlLabel>
@@ -121,4 +133,4 @@ const Order = () => {
   )
 }
 
-export default Order
+export default observer(Order)

@@ -1,10 +1,24 @@
 import { Heading, HeadingGroup, Text } from 'rsuite'
 import ShowSideNav from '../components/ShowSideNav'
+import { observer } from 'mobx-react-lite'
+import { useContext, useEffect } from 'react'
+import { Context } from '..'
 
 const Landing = () => {
+  const { store } = useContext(Context)
+
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      store.checkAuth()
+    }
+  }, [store])
+
+  if (store.isLoading) {
+    return <div>Загрузка...</div>
+  }
   return (
     <div className="mainLandingDiv">
-       <ShowSideNav/>
+       { (store.isAuth && <ShowSideNav/>) || <ShowSideNav/>}
       <div className="banner" style={{ backgroundImage: 'url(/images/imgBanner.jpg', padding: '100px 20px', textAlign: 'center' }} >
         <HeadingGroup>
           <Heading style={{ fontSize: 60, marginBottom: 20, color: 'white', textShadow: '3px 3px 6px rgba(0,0,0,0.8)', WebkitTextStroke: '2px #000' }} >
@@ -21,4 +35,4 @@ const Landing = () => {
   )
 }
 
-export default Landing
+export default observer(Landing)

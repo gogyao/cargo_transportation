@@ -1,10 +1,24 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
+import { observer } from 'mobx-react-lite'
 import ShowSideNav from '../components/ShowSideNav'
+import { Context } from '../index'
 
 const AboutTheCompany = () => {
+  const { store } = useContext(Context)
+
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      store.checkAuth()
+    }
+  }, [store])
+
+  if (store.isLoading) {
+    return <div>Загрузка...</div>
+  }
+
   return (
     <div className="PApage" style={{ backgroundImage: 'url(/images/about.jpg)' }}>
-      <ShowSideNav />
+    { (store.isAuth && <ShowSideNav/>) || <ShowSideNav/>}
       <div className="company-info">
         <h2>О компании</h2>
         <p>
@@ -34,4 +48,4 @@ const AboutTheCompany = () => {
   )
 }
 
-export default AboutTheCompany
+export default observer(AboutTheCompany)
