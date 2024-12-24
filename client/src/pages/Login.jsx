@@ -28,11 +28,11 @@ const LoginForm = () => {
         </Message>,
         { placement: 'topEnd' }
       )
-    }
-
-    const response = await store.registration(email, password)
-    if (localStorage.getItem('token')) {
-      await handleLogin()
+    } else {
+      const response = await store.registration(email, password)
+      if (localStorage.getItem('token')) {
+        await handleLogin()
+      }
     }
   }
 

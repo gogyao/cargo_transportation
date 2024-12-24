@@ -11,18 +11,22 @@ const PersonalAccount = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (localStorage.getItem('token')) {
-      store.checkAuth()
+    const fetchData = async () => {
+      try {
+        if (localStorage.getItem('token')) {
+          await store.checkAuth()
+        }
+
+        const response = await UserService.fetchUsers()
+        setUsers(response.data)
+      } catch (e) {
+        console.error(e)
+      }
     }
+
+    fetchData()
   }, [store])
-  async function getUsers () {
-    try {
-      const response = await UserService.fetchUsers()
-      setUsers(response.data)
-    } catch (e) {
-      console.log(e)
-    }
-  }
+
   const handleLogout = async () => {
     const response = await store.logout()
     if (!store.isAuth) {
@@ -43,9 +47,10 @@ const PersonalAccount = () => {
         <h2>Статус авторизации пользователя: {store.isAuth ? <span style={{ color: 'green' }}>авторизован</span> : <span style={{ color: 'red' }}>не авторизован</span>} </h2>
         <h2>Статус подтверждения пользователя: {store.user.isActivated ? <span style={{ color: 'green' }}>аккаунт подтвержден по почте</span> : <span style={{ color: 'red' }}>подтвердите вашу почту</span>}</h2>
         {(store.isAuth) ? <button className='logout' onClick={handleLogout}>Выйти из аккаунта</button> : ''}
-        {/* <div>
-          <button onClick={getUsers}>Получить пользователей</button>
-        </div> */}
+      </div>
+
+      <div className='accountInfo' style={{ zIndex: 10 }}>
+        <h1>Список ваших заказов</h1>
         {users.map(user =>
           <div key={user.email}>{user.email}</div>
         )}

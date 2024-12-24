@@ -70,8 +70,9 @@ Form {
 .PApage {
   margin-top: 52px;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
   align-content: center;
+  align-items: center;
   justify-content: center;
   background-size: cover;
   background-position: center;
@@ -82,6 +83,7 @@ Form {
   margin-left: 95px;
   border-radius: 15px;
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.603);
+  gap: 20px;
 }
 
 .PApage:before {
@@ -148,13 +150,14 @@ Form {
 }
 
 .accountInfo {
+  font-size: 20px;
   background-color: white;
   color: black;
   text-align: center;
   padding: 20px;
   border-radius: 15px;
-  width: 850px;
-  height: 380px;
+  width: fit-content;
+  height: fit-content;
   z-index: 1000;
 }
 
