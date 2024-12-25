@@ -4,6 +4,7 @@ import { observer } from 'mobx-react-lite'
 import { Button, ButtonToolbar, Form, Modal, Checkbox, Message, toaster } from 'rsuite'
 import ShowSideNav from '../components/ShowSideNav'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 const LoginForm = () => {
   const [email, setEmail] = useState('')
@@ -12,6 +13,7 @@ const LoginForm = () => {
   const [termsAccepted, setTermsAccepted] = useState(false)
   const { store } = useContext(Context)
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   const handleLogin = async () => {
     const response = await store.login(email, password)
@@ -24,7 +26,7 @@ const LoginForm = () => {
     if (!termsAccepted) {
       toaster.push(
         <Message type="error" closable>
-          Примите Условия пользования
+          {t('loginPage.errorMessage')}
         </Message>,
         { placement: 'topEnd' }
       )
@@ -55,7 +57,7 @@ const LoginForm = () => {
             onChange={(_, checked) => setTermsAccepted(checked)}
             style={{ marginRight: '4px', fontSize: '14px', color: '#333' }}
           >
-            <span style={{ fontSize: '14px', color: '#333' }}>Я ПРИНИМАЮ</span>
+            <span style={{ fontSize: '14px', color: '#333' }}>{t('loginPage.iAccept')}</span>
           </Checkbox>
           <Button
             appearance="link"
@@ -68,13 +70,13 @@ const LoginForm = () => {
               marginTop: 2
             }}
           >
-            УСЛОВИЯ ПОЛЬЗОВАНИЯ
+            {t('loginPage.conditions')}
           </Button>
         </Form.Group>
         <Form.Group>
           <ButtonToolbar className='loginButton'>
-            <Button appearance="primary" onClick={handleLogin}>Логин</Button>
-            <Button appearance="default" onClick={handleRegistration}>Регистрация</Button>
+            <Button appearance="primary" onClick={handleLogin}>{t('loginPage.login')}</Button>
+            <Button appearance="default" onClick={handleRegistration}>{t('loginPage.registration')}</Button>
           </ButtonToolbar>
         </Form.Group>
       </Form>
@@ -163,10 +165,10 @@ const LoginForm = () => {
           </Modal.Body>
           <Modal.Footer style={{ margin: 10 }}>
             <Button onClick={() => { setTermsAccepted(true); setShowTerms(false) }} appearance="primary">
-              Принять
+            {t('loginPage.accept')}
             </Button>
             <Button onClick={() => { setTermsAccepted(false); setShowTerms(false) }} appearance="subtle">
-              Отказаться
+            {t('loginPage.cancel')}
             </Button>
           </Modal.Footer>
         </div>

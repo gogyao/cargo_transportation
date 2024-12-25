@@ -77,6 +77,16 @@
     "address": "Office Address: Astana, Abay St., 10, office 15",
     "workingHours": "Working hours: Mon-Fri from 8:00 to 17:00",
     "tagline": "CargoTransportatioN LLC – we deliver your goods with care and professionalism!"
+    },
+
+    "loginPage":{
+      "errorMessage": "Accept the Terms of Use",
+      "iAccept": "I ACCEPT",
+      "conditions": "TERMS OF USE",
+      "accept": "Accept",
+      "cancel": "Cancel",
+      "login": "Login",
+      "registration": "Register"
     }
   }
   
