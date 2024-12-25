@@ -4,11 +4,13 @@ import { observer } from 'mobx-react-lite'
 import UserService from '../services/UserService'
 import ShowSideNav from '../components/ShowSideNav'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 const PersonalAccount = () => {
   const { store } = useContext(Context)
   const [users, setUsers] = useState([])
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,22 +37,22 @@ const PersonalAccount = () => {
   }
 
   if (store.isLoading) {
-    return <div>Загрузка...</div>
+    return <div>{t('loading')}</div>
   }
   return (
     <div className="PApage" style={{ backgroundImage: 'url(/images/PApage.jpg)' }}>
       <ShowSideNav />
       <div className='accountInfo'>
-        <h1>Информация о пользователе</h1>
-        <h2>{`Почта пользователя: ${store.user.email}`}</h2>
-        <h2>{'Роль  пользователя: пока отсутствует'}</h2>
-        <h2>Статус авторизации пользователя: {store.isAuth ? <span style={{ color: 'green' }}>авторизован</span> : <span style={{ color: 'red' }}>не авторизован</span>} </h2>
-        <h2>Статус подтверждения пользователя: {store.user.isActivated ? <span style={{ color: 'green' }}>аккаунт подтвержден по почте</span> : <span style={{ color: 'red' }}>подтвердите вашу почту</span>}</h2>
-        {(store.isAuth) ? <button className='logout' onClick={handleLogout}>Выйти из аккаунта</button> : ''}
+        <h1>{t('userInfo.title')}</h1>
+        <h2>{`${t('userInfo.email')}: ${store.user.email}`}</h2>
+        <h2>{t('userInfo.role')}: {t('userInfo.roleUnavailable')}</h2>
+        <h2>{t('userInfo.authStatus')}: {store.isAuth ? <span style={{ color: 'green' }}>{t('userInfo.authenticated')}</span> : <span style={{ color: 'red' }}>{t('userInfo.notAuthenticated')}</span>} </h2>
+        <h2>{t('userInfo.activationStatus')}: {store.user.isActivated ? <span style={{ color: 'green' }}>{t('userInfo.activated')}</span> : <span style={{ color: 'red' }}>{t('userInfo.notActivated')}</span>}</h2>
+        {(store.isAuth) ? <button className='logout' onClick={handleLogout}>{t('logout')}</button> : ''}
       </div>
 
       <div className='accountInfo1' style={{ zIndex: 10 }}>
-        <h1>Список ваших заказов</h1>
+        <h1>{t('order.checklist')}</h1>
         {users.map(user =>
           <div key={user.email}>{user.email}</div>
         )}

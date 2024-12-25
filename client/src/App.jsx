@@ -3,6 +3,7 @@ import { Context } from './index'
 import { observer } from 'mobx-react-lite'
 import UserService from './services/UserService'
 import ShowSideNav from './components/ShowSideNav'
+import './i18n/i18n'
 
 const App = () => {
   const { store } = useContext(Context)

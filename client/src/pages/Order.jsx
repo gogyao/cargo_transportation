@@ -4,6 +4,7 @@ import { Modal, Button, Form, Schema } from 'rsuite'
 import ShowSideNav from '../components/ShowSideNav'
 import { store } from '..'
 import OrderService from '../services/OrderService'
+import { useTranslation } from 'react-i18next'
 
 const { StringType } = Schema.Types
 
@@ -16,6 +17,7 @@ const Order = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [formData, setFormData] = useState({ name: '', email: '', phoneNumber: null, dangerType: null, description: '' })
   const [formError, setFormError] = useState({})
+  const { t } = useTranslation()
 
   useEffect(() => {
     if (localStorage.getItem('token')) {
@@ -33,7 +35,7 @@ const Order = () => {
   }, [store.user])
 
   if (store.isLoading) {
-    return <div>Загрузка...</div>
+    return <div>{t('loading')}</div>
   }
 
   const handleFileDownload = () => {
@@ -63,38 +65,36 @@ const Order = () => {
       {(store.isAuth && <ShowSideNav />) || <ShowSideNav />}
       <div className="order">
         <div style={{ padding: '20px' }}>
-          <h2 style={{ color: '#fff' }}>Отправка вашего заказа</h2>
+          <h2 style={{ color: '#fff' }}>{t('order.title')}</h2>
           <p style={{ color: '#fff', maxWidth: '600px' }}>
-            Отправка вашего заказа
-            Спасибо за выбор нашей службы грузоперевозок! Для оформления и отправки вашего груза, пожалуйста, заполните форму ниже. Убедитесь, что все данные указаны верно, чтобы избежать задержек в процессе доставки.
+          {t('order.thank')}
           </p>
           <p style={{ color: '#fff', maxWidth: '600px' }}>
-            Шаг 1: Заполните данные о грузе
-            Введите всю необходимую информацию о вашем грузе, включая тип товара, количество и место отправления. Важно указать точные данные, чтобы наш сервис мог точно рассчитать стоимость и сроки доставки.
+          {t('order.step1')}
+          {t('order.description1')}
           </p>
           <p style={{ color: '#fff', maxWidth: '600px' }}>
-            Шаг 2: Ознакомьтесь с опасностями груза
-            Если ваш груз относится к категории опасных товаров, пожалуйста, скачайте наш файл с перечнем всех возможных опасностей. Внимательно ознакомьтесь с условиями транспортировки.
-            [Скачать файл с опасностями груза]
+          {t('order.step2')}
+          {t('order.description2')}
           </p>
           <p style={{ color: '#fff', maxWidth: '600px' }}>
-            Шаг 3: Введите свои контактные данные
-            Пожалуйста, укажите ваши контактные данные для связи, чтобы мы могли оперативно обработать ваш заказ и предупредить о возможных изменениях.
+          {t('order.step3')}
+          {t('order.description3')}
           </p>
           <p style={{ color: '#fff', maxWidth: '600px' }}>
-            Шаг 4: Выберите дополнительные услуги
-            Отметьте, если вам нужны дополнительные услуги (например, упаковка, страховка и другие).
+          {t('order.step4')}
+          {t('order.description4')}
           </p>
           <p style={{ color: '#fff', maxWidth: '600px' }}>
-            Шаг 5: Отправьте заказ
-            Когда все поля будут заполнены, нажмите кнопку Отправить, чтобы подтвердить заказ. Ваши данные будут обработаны, и мы свяжемся с вами для уточнения деталей.
+          {t('order.step5')}
+          {t('order.description5')}
           </p>
           <div className='orderButtons'>
             <Button appearance="primary" onClick={handleFileDownload} style={{ marginRight: '10px' }}>
-              Скачать файл с опасностями груза
+            {t('order.downloadFile')}
             </Button>
             <Button appearance="default" onClick={() => setIsModalOpen(true)}>
-              Открыть форму для отправки заказа
+            {t('order.openForm')}
             </Button>
           </div>
         </div>
@@ -102,7 +102,7 @@ const Order = () => {
       <Modal open={isModalOpen} onClose={() => setIsModalOpen(false)}>
         <div className="Orderr">
           <Modal.Header>
-            <Modal.Title>Заполните данные для отправки заказа</Modal.Title>
+            <Modal.Title>{t('order.formTitle')}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form
@@ -113,23 +113,23 @@ const Order = () => {
               onCheck={(errors) => setFormError(errors)}
             >
               <Form.Group>
-                <Form.ControlLabel>Имя</Form.ControlLabel>
+                <Form.ControlLabel>{t('order.name')}</Form.ControlLabel>
                 <Form.Control name="name" />
               </Form.Group>
               <Form.Group>
-                <Form.ControlLabel>Email</Form.ControlLabel>
+                <Form.ControlLabel>{t('order.email')}</Form.ControlLabel>
                 <Form.Control name="email" type="email" autoComplete="email" />
               </Form.Group>
               <Form.Group>
-                <Form.ControlLabel>Телефон</Form.ControlLabel>
+                <Form.ControlLabel>{t('order.phone')}</Form.ControlLabel>
                 <Form.Control name="phoneNumber" type="integer" />
               </Form.Group>
               <Form.Group>
-                <Form.ControlLabel>Тип Опасности</Form.ControlLabel>
+                <Form.ControlLabel>{t('order.dangerType')}</Form.ControlLabel>
                 <Form.Control name="dangerType" type="string" />
               </Form.Group>
               <Form.Group>
-                <Form.ControlLabel> Описание и Информация </Form.ControlLabel>
+                <Form.ControlLabel> {t('order.description')} </Form.ControlLabel>
                 <Form.Control name="description" type="string" />
               </Form.Group>
             </Form>
@@ -145,10 +145,10 @@ const Order = () => {
                 }
               }}
             >
-              Отправить заказ
+              {t('order.submitOrder')}
             </Button>
             <Button appearance="subtle" onClick={() => setIsModalOpen(false)}>
-              Отмена
+            {t('order.cancel')}
             </Button>
           </Modal.Footer>
         </div>

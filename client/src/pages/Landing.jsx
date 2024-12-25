@@ -4,9 +4,11 @@ import ShowSideNav from '../components/ShowSideNav'
 import { observer } from 'mobx-react-lite'
 import { useContext, useEffect } from 'react'
 import { Context } from '..'
+import { useTranslation } from 'react-i18next'
 
 const Landing = () => {
   const { store } = useContext(Context)
+  const { t } = useTranslation()
 
   useEffect(() => {
     if (localStorage.getItem('token')) {
@@ -15,28 +17,28 @@ const Landing = () => {
   }, [store])
 
   if (store.isLoading) {
-    return <div>Загрузка...</div>
+    return <div>{t('loading')}</div>
   }
 
   const carouselItems = [
     {
-      title: 'ReactExpress Corporation',
-      description: 'Современная организация, меняющая взгляд на транспортировку грузов.',
+      title: t('landing.slide1.title'),
+      description: t('landing.slide1.description'),
       image: '/images/imgBanner.jpg'
     },
     {
-      title: 'Быстрая доставка',
-      description: 'Мы обеспечиваем максимально быструю транспортировку ваших грузов по всему миру.',
+      title: t('landing.slide2.title'),
+      description: t('landing.slide2.description'),
       image: '/images/slide2.jpg'
     },
     {
-      title: 'Надёжность и безопасность',
-      description: 'Гарантируем сохранность ваших грузов на всех этапах перевозки.',
+      title: t('landing.slide3.title'),
+      description: t('landing.slide3.description'),
       image: '/images/slide3.avif'
     },
     {
-      title: 'Индивидуальный подход',
-      description: 'Разрабатываем решения, которые точно соответствуют вашим потребностям.',
+      title: t('landing.slide4.title'),
+      description: t('landing.slide4.description'),
       image: '/images/slide4.avif'
     }
   ]

@@ -1,0 +1,82 @@
+{
+    "account": "Personal account",
+    "login": "Login/Register",
+    "makeOrder": "Make an order",
+    "about": "About the company",
+    "authorized": "Authorized user",
+    "user": "User:",
+    "logout": "Logout of the account",
+    "loading": "Loading...",
+
+    "landing": {
+      "slide1": {
+        "title": "ReactExpress Corporation",
+        "description": "A modern organization that is changing the way we look at freight transportation."
+      },
+      "slide2": {
+        "title": "Fast delivery",
+        "description": "We provide the fastest possible transportation of your shipments around the world."
+      },
+      "slide3": {
+        "title": "Reliability and safety",
+        "description": "We guarantee safety of your cargo at all stages of transportation."
+      },
+      "slide4": {
+        "title": "Individual approach",
+        "description": "Developing solutions that are precisely tailored to your needs."
+      }
+    },
+
+    "userInfo": {
+      "title": "User information",
+      "email": "User email",
+      "role": "User Role",
+      "roleUnavailable": "not yet available",
+      "authStatus": "User authorization status",
+      "authenticated": "authorized",
+      "notAuthenticated": "unauthorized",
+      "activationStatus": "User Confirmation Status",
+      "activated": "account confirmed by email",
+      "notActivated": "confirm your e-mail"
+    },
+
+    "order": {
+      "nameError": "Please enter a name",
+      "emailError": "Enter a valid email address",
+      "emailError2": "Please enter your email",
+      "checklist": "A list of your orders",
+      "title": "Shipping your order",
+      "thank": "Thank you for choosing our trucking service! To arrange and ship your shipment, please fill out the form below. Please make sure that all data is correct to avoid delays in the shipping process.",
+      "step1": "Step 1: Fill in the shipment details ",
+      "description1": "Enter all necessary information about your shipment, including type of goods, quantity and place of shipment. It is important to provide accurate data so that our service can accurately calculate the cost and delivery time.",
+      "step2": "Step 2: Familiarize yourself with the hazards of the shipment ",
+      "description2": "If your shipment is categorized as hazardous goods, please download our file with a list of all possible hazards. Please read the transportation conditions carefully.",
+      "step3": "Step 3: Enter your contact details ",
+      "description3": "Please provide your contact information so that we can process your order promptly and alert you to possible changes.",
+      "step4": "Step 4: Select additional services ",
+      "description4": "Check if you need additional services (such as packing, insurance, and others).",
+      "step5": "Step 5: Submit your order ",
+      "description5": "When all fields are filled in, click Submit to confirm your order. Your data will be processed and we will contact you with further details.",
+      "downloadFile": "Download the cargo hazards file",
+      "openForm": "Open the form to send an order",
+      "formTitle": "Fill in the data to send your order",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "dangerType": "Danger Type",
+      "description": "Description and Information",
+      "submitOrder": "Send order",
+      "cancel": "Cancel"
+    },
+
+    "aboutCompany": {
+    "title": "About the Company",
+    "description": "CargoTransportatioN LLC is a reliable partner in cargo transportation, providing a full range of services for delivering goods across Russia and CIS countries. Since 2015, we have been helping businesses and individuals safely and quickly transport goods of any complexity, offering modern solutions and an individual approach to each client. We provide road transportation of all types of cargo, including consolidated and individual shipments, as well as offer international delivery with full customs procedures support. For customer convenience, our company provides warehouse services with the option of storage, packaging, and cargo preparation for transportation. Our fleet includes more than 100 modern vehicles, allowing us to transport goods of various weights and volumes. We guarantee reliability at every stage – from packaging to delivery, and the ability to track cargo in real-time through the app gives our clients confidence in timely delivery. Each collaboration with us is built on reliability, promptness, and high-level service. Our specialists develop optimal routes to minimize your costs, and all cargo is insured for added safety. Contact us to get quality cargo transportation services:",
+    "phone": "Phone: +7 (495) 123-45-67",
+    "email": "Email: CargoTransportatioN@mail.ru",
+    "address": "Office Address: Astana, Abay St., 10, office 15",
+    "workingHours": "Working hours: Mon-Fri from 8:00 to 17:00",
+    "tagline": "CargoTransportatioN LLC – we deliver your goods with care and professionalism!"
+    }
+  }
+  
