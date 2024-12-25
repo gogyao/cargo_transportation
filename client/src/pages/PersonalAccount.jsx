@@ -40,7 +40,7 @@ const PersonalAccount = () => {
   return (
     <div className="PApage" style={{ backgroundImage: 'url(/images/PApage.jpg)' }}>
       <ShowSideNav />
-      <div className='accountInfo' style={{ backgroundColor: 'white', color: 'black' }}>
+      <div className='accountInfo'>
         <h1>Информация о пользователе</h1>
         <h2>{`Почта пользователя: ${store.user.email}`}</h2>
         <h2>{'Роль  пользователя: пока отсутствует'}</h2>
@@ -49,7 +49,7 @@ const PersonalAccount = () => {
         {(store.isAuth) ? <button className='logout' onClick={handleLogout}>Выйти из аккаунта</button> : ''}
       </div>
 
-      <div className='accountInfo' style={{ zIndex: 10 }}>
+      <div className='accountInfo1' style={{ zIndex: 10 }}>
         <h1>Список ваших заказов</h1>
         {users.map(user =>
           <div key={user.email}>{user.email}</div>

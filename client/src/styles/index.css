@@ -150,14 +150,26 @@ Form {
 }
 
 .accountInfo {
-  font-size: 20px;
-  background-color: white;
+  background-color: rgba(170, 243, 231, 0.671);
   color: black;
   text-align: center;
   padding: 20px;
-  border-radius: 15px;
-  width: fit-content;
-  height: fit-content;
+  border-radius: 18px;
+  width: 60%;
+  height: 80%;
+  z-index: 1000;
+  font-size: medium;
+}
+
+.accountInfo1 {
+  font-size: 20px;
+  background-color: rgba(183, 245, 235, 0.63);
+  color: black;
+  text-align: center;
+  padding: 20px;
+  border-radius: 18px;
+  width: 30%;
+  height: 80%;
   z-index: 1000;
 }
 
