@@ -2,7 +2,7 @@ import $api from '../http'
 
 export default class OrderService {
   static async addOrderButton (formData) {
-    const { name, email, phoneNumber, dangerType, pickupLocation, deliveryLocation, description } = formData
+    const { name, email, phoneNumber, dangerType, pickupLocation, deliveryLocation, description, price } = formData
     try {
       const response = await $api.post('/addOrder', {
         name,
@@ -11,7 +11,8 @@ export default class OrderService {
         dangerType,
         pickupLocation,
         deliveryLocation,
-        description
+        description,
+        price
       })
       console.log('Заказ успешно отправлен:', response.data)
       return response.data

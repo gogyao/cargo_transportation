@@ -90,9 +90,14 @@ const PersonalAccount = () => {
     setEditingOrder(null)
   }
 
-  const changeOrderStatus = async (orderId, status) => {
-    const response = await OrderService.editOrder(orderId, status)
-    console.log(`Order ${orderId} status updated to ${status}`)
+  const changeOrderStatus = async (orderId, pickupLocation, deliveryLocation, description, status) => {
+    const response = await OrderService.editOrder(orderId, pickupLocation, deliveryLocation, description, status)
+    if (response.success) {
+      setOrders(orders.map(order =>
+        order.id === orderId ? { ...order, status } : order
+      ))
+      console.log(`Order ${orderId} status updated to ${status}`)
+    }
   }
 
   if (store.isLoading) {
@@ -108,7 +113,7 @@ const PersonalAccount = () => {
           <h2>{`${t('userInfo.email')}: ${store.user.email}`}</h2>
           <h2>{`${t('userInfo.role')}: ${store.user.role}`}</h2>
           <h2>{t('userInfo.authStatus')}: {store.isAuth ? <span style={{ color: 'green' }}>{t('userInfo.authenticated')}</span> : <span style={{ color: 'red' }}>{t('userInfo.notAuthenticated')}</span>} </h2>
-          <h2>{t('userInfo.activationStatus')}: {store.user.isActivated ? <span style={{ color: 'green' }}>{t('userInfo.activated')}</span> : <span style={{ color: 'red' }}>{t('userInfo.notActivated')}</span>}</h2>
+          <h2>Активация: {store.user.isActivated ? <span style={{ color: 'green' }}>{t('userInfo.activated')}</span> : <span style={{ color: 'red' }}>{t('userInfo.notActivated')}</span>}</h2>
           {(store.isAuth) ? <button className='logout' onClick={handleLogout}>{t('logout')}</button> : ''}
         </div>
         : null}
@@ -127,6 +132,7 @@ const PersonalAccount = () => {
                         <th>Pickup Location</th>
                         <th>Delivery Location</th>
                         <th>Description</th>
+                        <th>Price</th>
                         <th>Status</th>
                         <th></th>
                         <th></th>
@@ -181,7 +187,14 @@ const PersonalAccount = () => {
                                   order.description
                                 )}
                           </td>
-                          <td>{order.status}</td>
+                          <td>{order.price}₸</td>
+                          <td
+                            style={{
+                              color: order.status === 'одобрен' ? 'green' : order.status === 'отклонен' ? 'red' : 'black'
+                            }}
+                          >
+                            {order.status}
+                          </td>
                           <td>
                             {editingOrder?.id === order.id
                               ? (
@@ -218,7 +231,7 @@ const PersonalAccount = () => {
           : (
               (
               <>
-                <h1>{t('order.checklist')}</h1>
+                <h1>Список заказов</h1>
                 {orders.length > 0
                   ? (
                     <table >
@@ -231,6 +244,7 @@ const PersonalAccount = () => {
                           <th>Pickup Location</th>
                           <th>Delivery Location</th>
                           <th>Description</th>
+                          <th>Price</th>
                           <th>Status</th>
                           <th></th>
                           <th></th>
@@ -247,10 +261,17 @@ const PersonalAccount = () => {
                             <td>{order.pickupLocation}</td>
                             <td>{order.deliveryLocation}</td>
                             <td>{order.description}</td>
-                            <td>{order.status}</td>
-                            <td><CheckOutlineIcon onClick={() => changeOrderStatus(order.id, 'одобрен')}
+                            <td>{order.price}₸</td>
+                            <td
+                              style={{
+                                color: order.status === 'одобрен' ? 'green' : order.status === 'отклонен' ? 'red' : 'black'
+                              }}
+                            >
+                              {order.status}
+                            </td>
+                            <td><CheckOutlineIcon onClick={() => changeOrderStatus(order.id, order.pickupLocation, order.deliveryLocation, order.description, 'одобрен')}
                               style={{ cursor: 'pointer', color: 'green' }} /></td>
-                            <td><CloseOutlineIcon onClick={() => changeOrderStatus(order.id, 'отклонен')}
+                            <td><CloseOutlineIcon onClick={() => changeOrderStatus(order.id, order.pickupLocation, order.deliveryLocation, order.description, 'отклонен')}
                               style={{ cursor: 'pointer', color: 'red' }} /></td>
                             <td><TrashIcon onClick={() => handleDeleteOrder(order.id)} /></td>
                           </tr>

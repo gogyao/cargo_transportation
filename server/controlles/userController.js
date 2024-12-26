@@ -62,8 +62,8 @@ class UserController {
 
     async addOrder(req, res, next) {
         try {
-            const { name, email, phoneNumber, dangerType, pickupLocation, deliveryLocation, description } = req.body
-            const orderData = await orderService.addOrder(name, email, phoneNumber, dangerType, pickupLocation, deliveryLocation, description)
+            const { name, email, phoneNumber, dangerType, pickupLocation, deliveryLocation, description, price } = req.body
+            const orderData = await orderService.addOrder(name, email, phoneNumber, dangerType, pickupLocation, deliveryLocation, description, price)
             return res.json(orderData)
         } catch (e) {
 
@@ -89,7 +89,6 @@ class UserController {
         const result = await orderService.editOrder(id, pickupLocation, deliveryLocation, description, status);
         res.status(200).send({ success: true, message: 'Order updated successfully' });
     }
-
     async getAllOrders(req, res, next) {
         try {
             const orders = await orderService.getAllOrders()

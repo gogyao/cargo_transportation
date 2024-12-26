@@ -14,7 +14,7 @@ router.get('/activate/:link', userController.activate)
 router.get('/refresh', userController.refresh)
 router.get('/getOrders', userController.getOrders)
 router.get('/getAllOrders', userController.getAllOrders)
-router.post('/addOrder', userController.addOrder )
+router.post('/addOrder', userController.addOrder)
 router.delete('/deleteOrder', userController.deleteOrder)
 router.put('/editOrder', userController.editOrder)
 

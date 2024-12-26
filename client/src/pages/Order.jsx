@@ -22,7 +22,8 @@ const Order = () => {
     dangerType: null,
     pickupLocation: '',
     deliveryLocation: '',
-    description: ''
+    description: '',
+    price: null
   })
   const [formError, setFormError] = useState({})
   const { t } = useTranslation()
@@ -68,6 +69,24 @@ const Order = () => {
     }
   }
 
+  const priceCalc = (distance, dangerType, volume) => {
+    const distanceRate = distance > 1000 ? 0.05 : 0.1
+    const dangerRate = dangerType < 3 ? 1 : dangerType < 6 ? 1.5 : 2
+    const volumeRate = volume <= 5 ? 50 : volume <= 20 ? 100 : 150
+    const basePrice = 10000
+    const price = basePrice + (distance * distanceRate) + (dangerType * dangerRate) + (volume * volumeRate)
+
+    return price
+  }
+
+  const handleCalculatePrice = () => {
+    const price = priceCalc(formData.distance, formData.dangerType, formData.volume)
+    setFormData((prevData) => ({
+      ...prevData,
+      price
+    }))
+  }
+
   return (
     <div className="PApage" style={{ backgroundImage: 'url(/images/order.jpg)' }}>
       {(store.isAuth && <ShowSideNav />) || <ShowSideNav />}
@@ -103,8 +122,8 @@ const Order = () => {
             </Button>
             {(store.user.role !== 'ADMIN')
               ? <Button appearance="default" onClick={() => setIsModalOpen(true)}>
-              {t('order.openForm')}
-            </Button>
+                {t('order.openForm')}
+              </Button>
               : <p style={{ marginTop: 6 }}>Вы не можете совершать заказы</p>}
           </div>
         </div>
@@ -139,6 +158,14 @@ const Order = () => {
                 <Form.Control name="dangerType" type="string" />
               </Form.Group>
               <Form.Group>
+                <Form.ControlLabel>Расстояние перевозки(км)</Form.ControlLabel>
+                <Form.Control name="distance" type="string" />
+              </Form.Group>
+              <Form.Group>
+                <Form.ControlLabel>Объем груза(м³)</Form.ControlLabel>
+                <Form.Control name="volume" type="string" />
+              </Form.Group>
+              <Form.Group>
                 <Form.ControlLabel>Пункт отправления:</Form.ControlLabel>
                 <Form.Control name="pickupLocation" type="string" />
               </Form.Group>
@@ -152,22 +179,29 @@ const Order = () => {
               </Form.Group>
             </Form>
           </Modal.Body>
-          <Modal.Footer>
-            <Button
-              appearance="primary"
-              onClick={() => {
-                if (Object.keys(formError).length === 0) {
-                  handleModalSubmit()
-                } else {
-                  console.error('Ошибки формы:', formError)
-                }
-              }}
-            >
-              {t('order.submitOrder')}
-            </Button>
-            <Button appearance="subtle" onClick={() => setIsModalOpen(false)}>
-              {t('order.cancel')}
-            </Button>
+          <Modal.Footer style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ paddingTop: 20, color: 'white' }}>
+              {(formData.price === null) ? <Button onClick={handleCalculatePrice}>Рассчитать цену</Button> : <span>Цена грузоперевозки: {`${priceCalc(formData.distance, formData.dangerType, formData.volume)}`}₸</span>}
+            </div>
+            <div style={{ paddingTop: 20 }}>
+            {(formData.price)
+              ? <Button
+                appearance="primary"
+                onClick={() => {
+                  if (Object.keys(formError).length === 0) {
+                    handleModalSubmit()
+                  } else {
+                    console.error('Ошибки формы:', formError)
+                  }
+                }}
+              >
+                {t('order.submitOrder')}
+              </Button>
+              : null}
+              <Button appearance="subtle" onClick={() => setIsModalOpen(false)}>
+                {t('order.cancel')}
+              </Button>
+            </div>
           </Modal.Footer>
         </div>
       </Modal>

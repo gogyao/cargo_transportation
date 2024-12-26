@@ -165,8 +165,8 @@ Form {
   justify-content: center;
   padding: 20px;
   border-radius: 18px;
-  width: 35%;
-  height: 90%;
+  width: 30%;
+  height: 60%;
   z-index: 1000;
   font-size: medium;
   background-color: rgba(255, 255, 255, 0.575);
@@ -180,7 +180,7 @@ Form {
   text-align: center;
   padding: 20px;
   border-radius: 18px;
-  width: 55%;
+  width: 60%;
   height: 50%;
   z-index: 1000;
   background-color: rgba(255, 255, 255, 0.582);

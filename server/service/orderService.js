@@ -1,8 +1,8 @@
 const { Order } = require('../models/models')
 
 class OrderService {
-    async addOrder(name, email, phoneNumber, dangerType, pickupLocation, deliveryLocation, description) {
-        const order = await Order.create({ name, email, phoneNumber, dangerType, pickupLocation, deliveryLocation, description })
+    async addOrder(name, email, phoneNumber, dangerType, pickupLocation, deliveryLocation, description, price) {
+        const order = await Order.create({ name, email, phoneNumber, dangerType, pickupLocation, deliveryLocation, description, price })
         return order
     }
     async deleteOrder(id) {
@@ -23,6 +23,7 @@ class OrderService {
             }
         );
     }
+
     async getAllOrders() {
         const order = await Order.findAll()
         return order

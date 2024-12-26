@@ -51,6 +51,7 @@ const Order = sequelize.define("order", {
   pickupLocation: { type: DataTypes.TEXT },
   deliveryLocation: { type: DataTypes.TEXT },
   description: { type: DataTypes.TEXT },
+  price: {type:DataTypes.TEXT},
   status: { type: DataTypes.TEXT, defaultValue: "В обработке" }
 },
   {
