@@ -166,10 +166,10 @@ Form {
   padding: 20px;
   border-radius: 18px;
   width: 35%;
-  height: 50%;
+  height: 90%;
   z-index: 1000;
   font-size: medium;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.575);
   padding: 20px;
   border-radius: 8px;
 }
@@ -183,7 +183,7 @@ Form {
   width: 55%;
   height: 50%;
   z-index: 1000;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.582);
   border-radius: 8px;
   overflow: auto;
 }
