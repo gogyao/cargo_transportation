@@ -59,21 +59,43 @@ class UserController {
             next(e)
         }
     }
-    async getUsers(req, res, next) {
+
+    async addOrder(req, res, next) {
         try {
-            const users = await userService.getAllUsers()
-            return res.json(users)
+            const { name, email, phoneNumber, dangerType, pickupLocation, deliveryLocation, description } = req.body
+            const orderData = await orderService.addOrder(name, email, phoneNumber, dangerType, pickupLocation, deliveryLocation, description)
+            return res.json(orderData)
+        } catch (e) {
+
+        }
+    }
+    async getOrders(req, res, next) {
+        try {
+            const { email } = req.query;
+            const order = await userService.getOrders(email)
+            return res.json(order)
         } catch (e) {
             next(e)
         }
     }
-    async addOrder(req, res, next) {
-        try {
-            const { name, email, phoneNumber, dangerType, description } = req.body
-            const orderData = await orderService.addOrder(name, email, phoneNumber, dangerType, description)
-            return res.json(orderData)
-        } catch (e) {
+    async deleteOrder(req, res, next) {
+        const { id } = req.body
+        const result = await orderService.deleteOrder(id);
+        return res.status(200).json({ message: 'Order deleted successfully' });
+    }
 
+    async editOrder(req, res, next) {
+        const { id, pickupLocation, deliveryLocation, description, status } = req.body;
+        const result = await orderService.editOrder(id, pickupLocation, deliveryLocation, description, status);
+        res.status(200).send({ success: true, message: 'Order updated successfully' });
+    }
+
+    async getAllOrders(req, res, next) {
+        try {
+            const orders = await orderService.getAllOrders()
+            return res.json(orders)
+        } catch (e) {
+            next(e)
         }
     }
 }

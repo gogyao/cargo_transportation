@@ -4,6 +4,7 @@ import ExitIcon from '@rsuite/icons/Exit'
 import IdMappingIcon from '@rsuite/icons/IdMapping'
 import ExpandOutlineIcon from '@rsuite/icons/ExpandOutline'
 import PeopleFolderIcon from '@rsuite/icons/PeopleFolder'
+import GlobalIcon from '@rsuite/icons/Global'
 import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Context } from '..'
@@ -58,7 +59,7 @@ const ShowSideNav = () => {
               </Nav.Item>
               : ''}
             <Nav.Item as={Link} to="/aboutthecompany" eventKey="4" icon={<PeopleFolderIcon />}>
-            {t('about')}
+              {t('about')}
             </Nav.Item>
             {(store.isAuth)
               ? <Nav.Menu eventKey="5" title={t('authorized')} icon={<IdMappingIcon />}>
@@ -66,9 +67,20 @@ const ShowSideNav = () => {
                 <Nav.Item onClick={handleLogout} eventKey="5-2" icon={<ExitIcon />}>{t('logout')}</Nav.Item>
               </Nav.Menu>
               : (null)}
+            <Nav.Menu eventKey="6" title={t('changeLang')} icon={<GlobalIcon />} >
+              <Nav.Item onClick={() => changeLanguage('en')} size="sm">
+                EN
+              </Nav.Item>
+              <Nav.Item onClick={() => changeLanguage('ru')} size="sm">
+                RU
+              </Nav.Item>
+              <Nav.Item onClick={() => changeLanguage('kz')} size="sm">
+                KZ
+              </Nav.Item>
+            </Nav.Menu>
           </Nav>
         </Sidenav.Body>
-        {expanded && (
+        {/* {expanded && (
           <div
             style={{
               position: 'absolute',
@@ -89,7 +101,7 @@ const ShowSideNav = () => {
               KZ
             </Button>
           </div>
-        )}
+        )} */}
         <Sidenav.Toggle onToggle={expanded => setExpanded(expanded)} />
       </Sidenav>
     </div>

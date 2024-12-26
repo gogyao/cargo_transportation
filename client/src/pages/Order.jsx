@@ -15,7 +15,15 @@ const model = Schema.Model({
 
 const Order = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [formData, setFormData] = useState({ name: '', email: '', phoneNumber: null, dangerType: null, description: '' })
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phoneNumber: null,
+    dangerType: null,
+    pickupLocation: '',
+    deliveryLocation: '',
+    description: ''
+  })
   const [formError, setFormError] = useState({})
   const { t } = useTranslation()
 
@@ -67,35 +75,37 @@ const Order = () => {
         <div style={{ padding: '20px' }}>
           <h2 style={{ color: '#fff' }}>{t('order.title')}</h2>
           <p style={{ color: '#fff', maxWidth: '600px' }}>
-          {t('order.thank')}
+            {t('order.thank')}
           </p>
           <p style={{ color: '#fff', maxWidth: '600px' }}>
-          {t('order.step1')}
-          {t('order.description1')}
+            {t('order.step1')}
+            {t('order.description1')}
           </p>
           <p style={{ color: '#fff', maxWidth: '600px' }}>
-          {t('order.step2')}
-          {t('order.description2')}
+            {t('order.step2')}
+            {t('order.description2')}
           </p>
           <p style={{ color: '#fff', maxWidth: '600px' }}>
-          {t('order.step3')}
-          {t('order.description3')}
+            {t('order.step3')}
+            {t('order.description3')}
           </p>
           <p style={{ color: '#fff', maxWidth: '600px' }}>
-          {t('order.step4')}
-          {t('order.description4')}
+            {t('order.step4')}
+            {t('order.description4')}
           </p>
           <p style={{ color: '#fff', maxWidth: '600px' }}>
-          {t('order.step5')}
-          {t('order.description5')}
+            {t('order.step5')}
+            {t('order.description5')}
           </p>
           <div className='orderButtons'>
             <Button appearance="primary" onClick={handleFileDownload} style={{ marginRight: '10px' }}>
-            {t('order.downloadFile')}
+              {t('order.downloadFile')}
             </Button>
-            <Button appearance="default" onClick={() => setIsModalOpen(true)}>
-            {t('order.openForm')}
+            {(store.user.role !== 'ADMIN')
+              ? <Button appearance="default" onClick={() => setIsModalOpen(true)}>
+              {t('order.openForm')}
             </Button>
+              : <p style={{ marginTop: 6 }}>Вы не можете совершать заказы</p>}
           </div>
         </div>
       </div>
@@ -129,6 +139,14 @@ const Order = () => {
                 <Form.Control name="dangerType" type="string" />
               </Form.Group>
               <Form.Group>
+                <Form.ControlLabel>Пункт отправления:</Form.ControlLabel>
+                <Form.Control name="pickupLocation" type="string" />
+              </Form.Group>
+              <Form.Group>
+                <Form.ControlLabel>Пункт назначения:</Form.ControlLabel>
+                <Form.Control name="deliveryLocation" type="string" />
+              </Form.Group>
+              <Form.Group>
                 <Form.ControlLabel> {t('order.description')} </Form.ControlLabel>
                 <Form.Control name="description" type="string" />
               </Form.Group>
@@ -148,7 +166,7 @@ const Order = () => {
               {t('order.submitOrder')}
             </Button>
             <Button appearance="subtle" onClick={() => setIsModalOpen(false)}>
-            {t('order.cancel')}
+              {t('order.cancel')}
             </Button>
           </Modal.Footer>
         </div>

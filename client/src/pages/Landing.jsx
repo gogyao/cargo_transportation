@@ -47,7 +47,7 @@ const Landing = () => {
     <div className="mainLandingDiv">
       {(store.isAuth && <ShowSideNav />) || <ShowSideNav />}
       <div style={{ margin: '0 auto', maxWidth: '100%' }}>
-        <Carousel autoplay className="custom-slider" style={{ height: '85vh', width: '100%' }}>
+        <Carousel autoplay className="custom-slider" style={{ height: '85vh', width: '100%', borderRadius: '15px' }}>
           {carouselItems.map((item, index) => (
             <div
               key={index}

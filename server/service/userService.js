@@ -1,4 +1,4 @@
-const { User } = require('../models/models')
+const { User, Order } = require('../models/models')
 const bcrypt = require('bcrypt')
 const uuid = require('uuid')
 const mailService = require('./mailService')
@@ -71,10 +71,11 @@ class UserService {
         return { ...tokens, user: userDto }
     }
 
-    async getAllUsers() {
-        const users = await User.findAll()
-        return users
+    async getOrders(email) {
+        const order = await Order.findAll({ where: { email } })
+        return order
     }
+
 }
 
 module.exports = new UserService()

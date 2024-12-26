@@ -12,7 +12,10 @@ router.post('/login', userController.login)
 router.post('/logout', userController.logout)
 router.get('/activate/:link', userController.activate)
 router.get('/refresh', userController.refresh)
-router.get('/users', userController.getUsers)
+router.get('/getOrders', userController.getOrders)
+router.get('/getAllOrders', userController.getAllOrders)
 router.post('/addOrder', userController.addOrder )
+router.delete('/deleteOrder', userController.deleteOrder)
+router.put('/editOrder', userController.editOrder)
 
 module.exports = router

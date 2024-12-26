@@ -19,7 +19,10 @@ const User = sequelize.define("user", {
   activationLink: {
     type: DataTypes.STRING
   }
-});
+},
+  {
+    timestamps: false,
+  });
 
 const Token = sequelize.define("token", {
   user: {
@@ -33,8 +36,11 @@ const Token = sequelize.define("token", {
   refreshToken: {
     type: DataTypes.STRING,
     allowNull: false,
-  },
+  }
 },
+  {
+    timestamps: false,
+  }
 );
 
 const Order = sequelize.define("order", {
@@ -42,8 +48,15 @@ const Order = sequelize.define("order", {
   email: { type: DataTypes.TEXT },
   phoneNumber: { type: DataTypes.STRING(11) },
   dangerType: { type: DataTypes.INTEGER },
-  description:{type:DataTypes.TEXT}
-})
+  pickupLocation: { type: DataTypes.TEXT },
+  deliveryLocation: { type: DataTypes.TEXT },
+  description: { type: DataTypes.TEXT },
+  status: { type: DataTypes.TEXT, defaultValue: "В обработке" }
+},
+  {
+    timestamps: false,
+  }
+)
 
 module.exports = {
   User, Token, Order

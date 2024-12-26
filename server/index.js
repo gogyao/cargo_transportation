@@ -35,7 +35,7 @@ app.use(function (req, res, next) { // Привязываем к каждому 
 const start = async () => {
     try {
         await sequelize.authenticate()
-        await sequelize.sync({ force: true })
+        await sequelize.sync()
         app.listen(PORT, () => console.log(`Server started on port ${PORT}`)) // Запускаем сервер и выводим лог в консоль
     } catch (e) {
         console.log(e)
