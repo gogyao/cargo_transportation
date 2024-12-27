@@ -45,7 +45,7 @@ const LoginForm = () => {
         <Form.Group controlId="email">
           <Form.ControlLabel>Email</Form.ControlLabel>
           <Form.Control name="email" type="text" onChange={value => setEmail(value)} value={email} />
-          <Form.HelpText tooltip>Email is required</Form.HelpText>
+          <Form.HelpText tooltip>{t('loginPage.emailRequired')}</Form.HelpText>
         </Form.Group>
         <Form.Group controlId="password">
           <Form.ControlLabel>Password</Form.ControlLabel>
@@ -70,7 +70,7 @@ const LoginForm = () => {
               marginTop: 2
             }}
           >
-            {t('loginPage.conditions')}
+            {t('loginPage.conditionsCaps')}
           </Button>
         </Form.Group>
         <Form.Group>
@@ -83,84 +83,86 @@ const LoginForm = () => {
       <Modal open={showTerms} onClose={() => setShowTerms(false)} size="sm">
         <div className="CompanyPolicy" >
           <Modal.Header>
-            <Modal.Title>Условия пользования</Modal.Title>
+            <Modal.Title>{t('loginPage.conditions')}</Modal.Title>
           </Modal.Header>
           <Modal.Body className='companyPolicyText' >
-            <h1>Политика конфиденциальности</h1>
-            <p>Введение<br />
-              Настоящая Политика конфиденциальности (далее – Политика) описывает, как компания CargoTransportatioN (далее – Компания, мы, наш или нас) собирает, использует, передает и защищает ваши персональные данные, предоставленные через наш сайт грузоперевозок по миру .<br />
-              Мы понимаем важность обеспечения конфиденциальности и безопасности данных наших клиентов и гарантируем, что они будут обрабатываться в соответствии с действующим законодательством и правилами.<br />
+            <h1>{t('privacyPolicy.title')}</h1>
+            <p>{t('privacyPolicy.introduction.line1')}<br />
+            {t('privacyPolicy.introduction.line2')}<br />
+            {t('privacyPolicy.introduction.line3')}<br />
             </p>
             <p>
-              1. Сбор персональных данных<br />
-              Мы можем собирать следующие типы персональных данных:<br />
-              Имя, фамилия, отчество;<br />
-              Контактные данные (номер телефона, адрес электронной почты);<br />
-              Адрес отправления и доставки грузов;<br />
-              Платежные данные (включая информацию о банковских картах или иных методах оплаты);<br />
-              Информация о грузе (размеры, вес, содержимое, стоимость);<br />
-              История заказов и взаимодействий с Сайтом;<br />
-              Техническая информация (IP-адрес, cookies, данные об устройстве и браузере).<br />
-              Мы собираем ваши данные только в случае, если вы добровольно предоставляете их, используя наш Сайт, регистрируясь на нем или оформляя заказ.<br />
+            {t('privacyPolicy.dataCollection.title')}<br />
+            {t('privacyPolicy.dataCollection.line1')}<br />
+            {t('privacyPolicy.dataCollection.line2')}<br />
+            {t('privacyPolicy.dataCollection.line3')}<br />
+            {t('privacyPolicy.dataCollection.line4')}<br />
+            {t('privacyPolicy.dataCollection.line5')}<br />
+            {t('privacyPolicy.dataCollection.line6')}<br />
+            {t('privacyPolicy.dataCollection.line7')}<br />
+            {t('privacyPolicy.dataCollection.line8')}<br />
+            {t('privacyPolicy.dataCollection.line9')}<br />
             </p>
             <p>
-              2. Цели обработки данных<br />
-              Ваши персональные данные используются исключительно для следующих целей:<br />
-              Обработка и выполнение заказов на грузоперевозки;<br />
-              Обеспечение качественного обслуживания клиентов;<br />
-              Информирование о статусе заказа и предоставление обновлений;<br />
-              Выполнение юридических обязательств;<br />
-              Улучшение работы нашего Сайта и сервисов;<br />
-              Предоставление персонализированных предложений и рекламных материалов (только с вашего согласия).<br />
-              3. Передача данных третьим лицам<br />
-              Мы не передаем ваши данные третьим лицам, за исключением случаев, предусмотренных законодательством, а также для выполнения заказа, в том числе:<br />
-              Транспортным и логистическим партнерам для доставки грузов;<br />
-              Финансовым учреждениям для обработки платежей;<br />
-              Государственным органам по запросу в рамках законодательства.<br />
-              Во всех остальных случаях передача данных возможна только с вашего предварительного согласия.<br />
+            {t('privacyPolicy.dataUsage.title')}<br />
+            {t('privacyPolicy.dataUsage.line1')}<br />
+            {t('privacyPolicy.dataUsage.line2')}<br />
+            {t('privacyPolicy.dataUsage.line3')}<br />
+            {t('privacyPolicy.dataUsage.line4')}<br />
+            {t('privacyPolicy.dataUsage.line5')}<br />
+            {t('privacyPolicy.dataUsage.line6')}<br />
+            {t('privacyPolicy.dataUsage.line7')}<br />
             </p>
             <p>
-              4. Безопасность данных<br />
-              Мы принимаем все необходимые меры для защиты ваших данных от несанкционированного доступа, утраты, изменения или распространения.<br />
-              В частности:<br />
-              Используем современные технологии шифрования данных;<br />
-              Ограничиваем доступ к данным только тем сотрудникам, которым это необходимо для выполнения их обязанностей;<br />
-              Регулярно обновляем наши системы безопасности.<br />
+            {t('privacyPolicy.dataSharing.title')}<br />
+            {t('privacyPolicy.dataSharing.line1')}<br />
+            {t('privacyPolicy.dataSharing.line2')}<br />
+            {t('privacyPolicy.dataSharing.line3')}<br />
+            {t('privacyPolicy.dataSharing.line4')}<br />
+            {t('privacyPolicy.dataSharing.line5')}<br />
             </p>
             <p>
-              5. Ваши права<br />
-              Вы имеете следующие права в отношении ваших персональных данных:<br />
-              Получить доступ к вашим данным и получить копию информации, которую мы храним;<br />
-              Исправить или обновить ваши данные;<br />
-              Удалить ваши данные (при условии отсутствия юридических обязательств, требующих их сохранения);<br />
-              Ограничить обработку ваших данных или возразить против их обработки;<br />
-              Отозвать согласие на обработку данных в любой момент.<br />
-              Для реализации ваших прав вы можете связаться с нами по контактам, указанным в разделе Контакты.<br />
+            {t('privacyPolicy.dataSecurity.title')}<br />
+            {t('privacyPolicy.dataSecurity.line1')}<br />
+            {t('privacyPolicy.dataSecurity.line2')}<br />
+            {t('privacyPolicy.dataSecurity.line3')}<br />
+            {t('privacyPolicy.dataSecurity.line4')}<br />
+            {t('privacyPolicy.dataSecurity.line5')}<br />
             </p>
             <p>
-              6. Использование файлов cookie<br />
-              Мы используем файлы cookie для улучшения работы Сайта. Cookie позволяют:<br />
-              Запоминать ваши предпочтения;<br />
-              Анализировать поведение на Сайте для его улучшения;<br />
-              Показывать релевантные рекламные материалы.<br />
-              Вы можете управлять настройками cookie в вашем браузере.<br />
+            {t('privacyPolicy.userRights.title')}<br />
+            {t('privacyPolicy.userRights.line1')}<br />
+            {t('privacyPolicy.userRights.line2')}<br />
+            {t('privacyPolicy.userRights.line3')}<br />
+            {t('privacyPolicy.userRights.line4')}<br />
+            {t('privacyPolicy.userRights.line5')}<br />
+            {t('privacyPolicy.userRights.line6')}<br />
+            {t('privacyPolicy.userRights.line7')}<br />
             </p>
             <p>
-              7. Хранение данных<br />
-              Мы храним ваши данные только до тех пор, пока это необходимо для выполнения целей, указанных в Политике, или в рамках требований законодательства.<br />
+            {t('privacyPolicy.cookies.title')}<br />
+            {t('privacyPolicy.cookies.line1')}<br />
+            {t('privacyPolicy.cookies.line2')}<br />
+            {t('privacyPolicy.cookies.line3')}<br />
+            {t('privacyPolicy.cookies.line4')}<br />
+            {t('privacyPolicy.cookies.line5')}<br />
             </p>
             <p>
-              8. Изменения в Политике<br />
-              Мы оставляем за собой право обновлять данную Политику. Все изменения будут опубликованы на этой странице, и мы рекомендуем вам регулярно проверять ее актуальность.<br />
+            {t('privacyPolicy.dataRetention.title')}<br />
+            {t('privacyPolicy.dataRetention.line1')}<br />
             </p>
             <p>
-              9. Контакты <br />
-              Если у вас есть вопросы или запросы относительно обработки ваших данных, свяжитесь с нами:<br />
-              Электронная почта: [CargoTransportatioN@mail.ru]<br />
-              Телефон: +88005553535<br />
-              Адрес: г.Астана ул.Абая д.10 офис 15 <br />
-              Мы ценим ваше доверие и делаем все возможное для обеспечения безопасности и конфиденциальности ваших данных.<br />
-              Дата последнего обновления: 22.12.2024.
+            {t('privacyPolicy.policyUpdates.title')}<br />
+            {t('privacyPolicy.policyUpdates.line1')}<br />
+            </p>
+            <p>
+            {t('privacyPolicy.contact.title')} <br />
+            {t('privacyPolicy.contact.line1')}<br />
+            {t('privacyPolicy.contact.line2')}<br />
+            {t('privacyPolicy.contact.line3')}<br />
+            {t('privacyPolicy.contact.line4')} <br />
+            {t('privacyPolicy.contact.line5')}<br />
+            {t('privacyPolicy.contact.line6')}
             </p>
           </Modal.Body>
           <Modal.Footer style={{ margin: 10 }}>

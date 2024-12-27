@@ -113,7 +113,7 @@ const PersonalAccount = () => {
           <h2>{`${t('userInfo.email')}: ${store.user.email}`}</h2>
           <h2>{`${t('userInfo.role')}: ${store.user.role}`}</h2>
           <h2>{t('userInfo.authStatus')}: {store.isAuth ? <span style={{ color: 'green' }}>{t('userInfo.authenticated')}</span> : <span style={{ color: 'red' }}>{t('userInfo.notAuthenticated')}</span>} </h2>
-          <h2>Активация: {store.user.isActivated ? <span style={{ color: 'green' }}>{t('userInfo.activated')}</span> : <span style={{ color: 'red' }}>{t('userInfo.notActivated')}</span>}</h2>
+          <h2>{t('userInfo.activationStatus')} {store.user.isActivated ? <span style={{ color: 'green' }}>{t('userInfo.activated')}</span> : <span style={{ color: 'red' }}>{t('userInfo.notActivated')}</span>}</h2>
           {(store.isAuth) ? <button className='logout' onClick={handleLogout}>{t('logout')}</button> : ''}
         </div>
         : null}
@@ -122,18 +122,18 @@ const PersonalAccount = () => {
         {store.user.role === 'USER'
           ? (
             <>
-              <h1>{t('order.checklist')}</h1>
+              <h1>{t('userInfo.checklist')}</h1>
               {orders.length > 0
                 ? (
                   <table>
                     <thead>
                       <tr>
-                        <th>Order ID</th>
-                        <th>Pickup Location</th>
-                        <th>Delivery Location</th>
-                        <th>Description</th>
-                        <th>Price</th>
-                        <th>Status</th>
+                        <th>{t('userInfo.table.orderID')}</th>
+                        <th>{t('userInfo.table.pickupLocation')}</th>
+                        <th>{t('userInfo.table.deliveryLocation')}</th>
+                        <th>{t('userInfo.table.description')}</th>
+                        <th>{t('userInfo.table.price')}</th>
+                        <th>{t('userInfo.table.status')}</th>
                         <th></th>
                         <th></th>
                       </tr>
@@ -204,10 +204,10 @@ const PersonalAccount = () => {
                                     style={{ marginBottom: 3 }}
                                     onClick={handleSaveEdit}
                                   >
-                                    Save
+                                    {t('userInfo.table.save')}
                                   </button>
                                   <button className='btn' onClick={handleCancelEdit}>
-                                    Cancel
+                                  {t('userInfo.table.cancel')}
                                   </button>
                                 </>
                                 )
@@ -224,28 +224,28 @@ const PersonalAccount = () => {
                   </table>
                   )
                 : (
-                  <p>Заказов нет</p>
+                  <p>{t('userInfo.noOrders')}</p>
                   )}
             </>
             )
           : (
               (
               <>
-                <h1>Список заказов</h1>
+                <h1>{t('userInfo.adminChecklist')}</h1>
                 {orders.length > 0
                   ? (
                     <table >
                       <thead>
                         <tr>
-                          <th>Order ID</th>
-                          <th>Name</th>
-                          <th>Email</th>
-                          <th>PhoneNumber</th>
-                          <th>Pickup Location</th>
-                          <th>Delivery Location</th>
-                          <th>Description</th>
-                          <th>Price</th>
-                          <th>Status</th>
+                          <th>{t('userInfo.table.orderID')}</th>
+                          <th>{t('userInfo.table.name')}</th>
+                          <th>{t('userInfo.table.email')}</th>
+                          <th>{t('userInfo.table.phoneNumber')}</th>
+                          <th>{t('userInfo.table.pickupLocation')}</th>
+                          <th>{t('userInfo.table.deliveryLocation')}</th>
+                          <th>{t('userInfo.table.description')}</th>
+                          <th>{t('userInfo.table.price')}</th>
+                          <th>{t('userInfo.table.status')}</th>
                           <th></th>
                           <th></th>
                           <th></th>
@@ -280,7 +280,7 @@ const PersonalAccount = () => {
                     </table>
                     )
                   : (
-                    <p>Нет заказов</p>
+                    <p>{t('userInfo.noOrders')}</p>
                     )}
               </>
               )

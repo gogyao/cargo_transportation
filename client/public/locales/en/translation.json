@@ -36,16 +36,31 @@
       "authStatus": "User authorization status",
       "authenticated": "authorized",
       "notAuthenticated": "unauthorized",
-      "activationStatus": "User Confirmation Status",
+      "activationStatus": "Activation:",
       "activated": "account confirmed by email",
-      "notActivated": "confirm your e-mail"
+      "notActivated": "confirm your e-mail",
+      "checklist": "A list of your orders",
+      "adminChecklist": "Order list",
+      "noOrders": "No orders",
+      "table": {
+        "orderID": "Order ID",
+        "pickupLocation": "Pickup Location",
+        "deliveryLocation": "Delivery Location",
+        "description": "Description",
+        "price": "Price",
+        "status": "Status",
+        "name": "Name",
+        "email": "Email",
+        "phoneNumber": "PhoneNumber",
+        "save": "Save",
+        "cancel": "Cancel"
+      }
     },
 
     "order": {
       "nameError": "Please enter a name",
       "emailError": "Enter a valid email address",
       "emailError2": "Please enter your email",
-      "checklist": "A list of your orders",
       "title": "Shipping your order",
       "thank": "Thank you for choosing our trucking service! To arrange and ship your shipment, please fill out the form below. Please make sure that all data is correct to avoid delays in the shipping process.",
       "step1": "Step 1: Fill in the shipment details ",
@@ -60,11 +75,18 @@
       "description5": "When all fields are filled in, click Submit to confirm your order. Your data will be processed and we will contact you with further details.",
       "downloadFile": "Download the cargo hazards file",
       "openForm": "Open the form to send an order",
+      "adminForm": "You can't place orders",
       "formTitle": "Fill in the data to send your order",
       "name": "Name",
       "email": "Email",
       "phone": "Phone",
       "dangerType": "Danger Type",
+      "distance": "Distance of transportation(km)",
+      "volume": "Cargo volume(m³)",
+      "pickupLocation": "Point of Departure:",
+      "deliveryLocation": "Destination:",
+      "calculatePrice": "Calculate price",
+      "price": "Trucking price:",
       "description": "Description and Information",
       "submitOrder": "Send order",
       "cancel": "Cancel"
@@ -83,11 +105,95 @@
     "loginPage":{
       "errorMessage": "Accept the Terms of Use",
       "iAccept": "I ACCEPT",
-      "conditions": "TERMS OF USE",
+      "conditionsCaps": "TERMS OF USE",
       "accept": "Accept",
       "cancel": "Cancel",
       "login": "Login",
-      "registration": "Register"
+      "registration": "Register",
+      "emailRequired": "Email is required",
+      "conditions": "Terms of Use"
+    },
+
+    "privacyPolicy": {
+      "title": "Privacy Policy",
+      "introduction": {
+        "line1": "Introduction",
+        "line2": "This Privacy Policy (the “Policy”) describes how CargoTransportatioN (the “Company, we, our or us”) collects, uses, shares and protects your personal information submitted through our worldwide trucking website.",
+        "line3": "We understand the importance of ensuring the privacy and security of our customers' data and ensure that it is processed in accordance with applicable laws and regulations."
+      },
+      "dataCollection": {
+        "title": "1. Collection of personal data",
+        "line1": "We may collect the following types of personal data:",
+        "line2": "First name, last name, middle name;",
+        "line3": "Contact information (phone number, e-mail address);",
+        "line4": "Shipping and delivery address of shipments;",
+        "line5": "Payment data (including information about bank cards or other payment methods);",
+        "line6": "Shipment information (dimensions, weight, contents, value);",
+        "line7": "History of orders and interactions with the Site;",
+        "line8": "Technical information (IP address, cookies, device and browser data).",
+        "line9": "We only collect your data if you voluntarily provide it by using our Site, registering on it or placing an order."
+      },
+      "dataUsage": {
+        "title": "2. Objectives of data processing",
+        "line1": "Your personal data is used solely for the following purposes:",
+        "line2": "Processing and fulfillment of trucking orders;",
+        "line3": "Providing quality customer service;",
+        "line4": "Informing on order status and providing updates;",
+        "line5": "Fulfilling Legal Obligations;",
+        "line6": "Improving the operation of our Site and services;",
+        "line7": "Providing personalized offers and promotional materials (only with your consent)."
+      },
+      "dataSharing": {
+        "title": "3. Transfer of data to third parties",
+        "line1": "We do not share your data with third parties, except as required by law and to fulfill an order, including:",
+        "line2": "To transportation and logistics partners for cargo delivery;",
+        "line3": "Financial institutions to process payments;",
+        "line4": "To public authorities upon request within the scope of the legislation.",
+        "line5": "In all other cases, data may only be transferred with your prior consent."
+      },
+      "dataSecurity": {
+        "title": "4. Data security",
+        "line1": "We take all necessary measures to protect your data from unauthorized access, loss, alteration or dissemination.",
+        "line2": "Specifically:",
+        "line3": "We use modern data encryption technologies;",
+        "line4": "Restrict access to data to only those employees who need it to perform their duties;",
+        "line5": "We update our security systems on a regular basis."
+      },
+      "userRights": {
+        "title": "5. Your rights",
+        "line1": "You have the following rights in relation to your personal data:",
+        "line2": "Access your data and get a copy of the information we store;",
+        "line3": "Correct or update your information;",
+        "line4": "Delete your data (provided there is no legal obligation requiring it to be retained);",
+        "line5": "Limit the processing of your data or object to the processing of your data;",
+        "line6": "Withdraw consent to data processing at any time.",
+        "line7": "To exercise your rights, you may contact us at the contacts listed in the Contact Us section."
+      },
+      "cookies": {
+        "title": "6. Use of cookies",
+        "line1": "We use cookies to improve the performance of the Site. Cookies allow:",
+        "line2": "Memorize your preferences;",
+        "line3": "Analyze behavior on the Site to improve it;",
+        "line4": "Show relevant promotional materials.",
+        "line5": "You can manage the cookie settings in your browser."
+      },
+      "dataRetention": {
+        "title": "7. Data storage",
+        "line1": "We only keep your data for as long as is necessary to fulfill the purposes set out in the Policy or as required by law."
+      },
+      "policyUpdates": {
+        "title": "8. Changes to the Policy",
+        "line1": "We reserve the right to update this Policy. Any changes will be posted on this page and we encourage you to check back regularly to make sure it is up to date."
+      },
+      "contact": {
+        "title": "9. Contacts",
+        "line1": "If you have any questions or queries regarding the processing of your data, please contact us:",
+        "line2": "Email: [CargoTransportatioN@mail.ru]",
+        "line3": "Phone: +88005553535",
+        "line4": "Address: Astana, Abaya str. 10, office 15",
+        "line5": "We value your trust and do everything we can to ensure the security and privacy of your data.",
+        "line6": "Last update date: 12/22/2024."
+      }
     }
   }
   

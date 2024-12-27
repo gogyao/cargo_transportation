@@ -124,7 +124,7 @@ const Order = () => {
               ? <Button appearance="default" onClick={() => setIsModalOpen(true)}>
                 {t('order.openForm')}
               </Button>
-              : <p style={{ marginTop: 6 }}>Вы не можете совершать заказы</p>}
+              : <p style={{ marginTop: 6 }}>{t('order.adminForm')}</p>}
           </div>
         </div>
       </div>
@@ -158,19 +158,19 @@ const Order = () => {
                 <Form.Control name="dangerType" type="string" />
               </Form.Group>
               <Form.Group>
-                <Form.ControlLabel>Расстояние перевозки(км)</Form.ControlLabel>
+                <Form.ControlLabel>{t('order.distance')}</Form.ControlLabel>
                 <Form.Control name="distance" type="string" />
               </Form.Group>
               <Form.Group>
-                <Form.ControlLabel>Объем груза(м³)</Form.ControlLabel>
+                <Form.ControlLabel>{t('order.volume')}</Form.ControlLabel>
                 <Form.Control name="volume" type="string" />
               </Form.Group>
               <Form.Group>
-                <Form.ControlLabel>Пункт отправления:</Form.ControlLabel>
+                <Form.ControlLabel>{t('order.pickupLocation')}</Form.ControlLabel>
                 <Form.Control name="pickupLocation" type="string" />
               </Form.Group>
               <Form.Group>
-                <Form.ControlLabel>Пункт назначения:</Form.ControlLabel>
+                <Form.ControlLabel>{t('order.deliveryLocation')}</Form.ControlLabel>
                 <Form.Control name="deliveryLocation" type="string" />
               </Form.Group>
               <Form.Group>
@@ -181,7 +181,7 @@ const Order = () => {
           </Modal.Body>
           <Modal.Footer style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div style={{ paddingTop: 20, color: 'white' }}>
-              {(formData.price === null) ? <Button onClick={handleCalculatePrice}>Рассчитать цену</Button> : <span>Цена грузоперевозки: {`${priceCalc(formData.distance, formData.dangerType, formData.volume)}`}₸</span>}
+              {(formData.price === null) ? <Button onClick={handleCalculatePrice}>{t('order.calculatePrice')}</Button> : <span>{t('order.price')} {`${priceCalc(formData.distance, formData.dangerType, formData.volume)}`}₸</span>}
             </div>
             <div style={{ paddingTop: 20 }}>
             {(formData.price)
