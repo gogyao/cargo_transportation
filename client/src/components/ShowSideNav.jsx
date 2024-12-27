@@ -44,7 +44,7 @@ const ShowSideNav = () => {
         <Sidenav.Body>
           <Nav activeKey={activeKey} onSelect={setActiveKey}>
             <Nav.Item as={Link} to="/" eventKey="1" icon={<CustomIcon url='/images/logo.png' />}>
-              ReactExpress(Landing)
+            CargoTranspotatioN(Landing)
             </Nav.Item>
             {(store.isAuth)
               ? (<Nav.Item as={Link} to="/auth/personalaccount" eventKey="2" icon={<MemberIcon />}>
